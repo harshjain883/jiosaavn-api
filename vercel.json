@@ -1,24 +1,33 @@
 {
   "version": 2,
   "regions": ["bom1"],
-  "builds": [
+  "rewrites": [
     {
-      "src": "src/server.ts",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/api/index.ts"
     }
   ],
-  "routes": [
+  "headers": [
     {
-      "src": "/(.*)",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Cache-Control": "s-maxage=300, stale-while-revalidate",
-        "Author": "Sumit Kolhe",
-        "Github": "https://github.com/sumitkolhe/jiosaavn-api"
-      },
-      "dest": "src/server.ts"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=300, stale-while-revalidate"
+        }
+      ]
     }
   ]
 }
