@@ -1,6 +1,4 @@
 import { handle } from '@hono/node-server/vercel'
-import { App } from '../src/app'
+import app from '../src/server'
 
-const server = new App()
-
-export default handle(server.app)
+export default handle(app)
